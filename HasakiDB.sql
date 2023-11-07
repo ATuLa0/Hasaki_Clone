@@ -27,11 +27,22 @@ CREATE TABLE KhachHang (
 CREATE TABLE SanPham (
     SanPhamID INT PRIMARY KEY,
     TenSanPham NVARCHAR(255),
+    HinhAnh VARCHAR(255),
     MoTa NVARCHAR(MAX),
     Gia FLOAT,
+    DungTich NVARCHAR(255),
+    ThuongHieu NVARCHAR(255),
+    XuatXu NVARCHAR(255),
+    LoaiDaPhuHop NVARCHAR(255),
+    DoPH FLOAT,
+    CongDung NVARCHAR(MAX),
+    ThanhPhanChinh NVARCHAR(MAX),
+    CachSuDung NVARCHAR(MAX),
+    LuuY NVARCHAR(MAX),
     ThuongHieuID INT,
     FOREIGN KEY (ThuongHieuID) REFERENCES ThuongHieu(ThuongHieuID)
 );
+
 
 CREATE TABLE SanPhamDanhMuc (
     SanPhamID INT,
@@ -63,12 +74,12 @@ CREATE TABLE DonHang (
 );
 
 CREATE TABLE ChiTietDonHang (
-    ChiTietDonHangID INT PRIMARY KEY,
     DonHangID INT,
     SanPhamID INT,
     SoLuong INT,
     FOREIGN KEY (DonHangID) REFERENCES DonHang(DonHangID),
-    FOREIGN KEY (SanPhamID) REFERENCES SanPham(SanPhamID)
+    FOREIGN KEY (SanPhamID) REFERENCES SanPham(SanPhamID),
+	PRIMARY KEY(DonHangID, SanPhamID)
 );
 
 CREATE TABLE NhanVien (
