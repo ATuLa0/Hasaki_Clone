@@ -13,10 +13,10 @@ namespace Hasaki.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class HasakiEntities : DbContext
+    public partial class HasakiDatabaseEntities : DbContext
     {
-        public HasakiEntities()
-            : base("name=HasakiEntities")
+        public HasakiDatabaseEntities()
+            : base("name=HasakiDatabaseEntities")
         {
         }
     
@@ -25,30 +25,14 @@ namespace Hasaki.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<BAOHANH> BAOHANHs { get; set; }
-        public virtual DbSet<BAOTRI> BAOTRIs { get; set; }
-        public virtual DbSet<CHITIETHOADON> CHITIETHOADONs { get; set; }
-        public virtual DbSet<CHITIETPHIEUNHAP> CHITIETPHIEUNHAPs { get; set; }
-        public virtual DbSet<CHUCVU> CHUCVUs { get; set; }
-        public virtual DbSet<DANGKYBAOTRI> DANGKYBAOTRIs { get; set; }
-        public virtual DbSet<DMKHOA> DMKHOAs { get; set; }
-        public virtual DbSet<DMMH> DMMHs { get; set; }
-        public virtual DbSet<DMSV> DMSVs { get; set; }
-        public virtual DbSet<HOADON> HOADONs { get; set; }
-        public virtual DbSet<KETQUA> KETQUAs { get; set; }
-        public virtual DbSet<KHACHHANG> KHACHHANGs { get; set; }
-        public virtual DbSet<KHUYENMAI> KHUYENMAIs { get; set; }
-        public virtual DbSet<LOAIKH> LOAIKHs { get; set; }
-        public virtual DbSet<NHACUNGCAP> NHACUNGCAPs { get; set; }
-        public virtual DbSet<NHANVIEN> NHANVIENs { get; set; }
-        public virtual DbSet<PHIEUNHAP> PHIEUNHAPs { get; set; }
-        public virtual DbSet<SANPHAM> SANPHAMs { get; set; }
-        public virtual DbSet<TONKHO> TONKHOes { get; set; }
-        public virtual DbSet<XE> XEs { get; set; }
-        public virtual DbSet<MSreplication_options> MSreplication_options { get; set; }
-        public virtual DbSet<spt_fallback_db> spt_fallback_db { get; set; }
-        public virtual DbSet<spt_fallback_dev> spt_fallback_dev { get; set; }
-        public virtual DbSet<spt_fallback_usg> spt_fallback_usg { get; set; }
-        public virtual DbSet<spt_monitor> spt_monitor { get; set; }
+        public virtual DbSet<ChiTietDonHang> ChiTietDonHangs { get; set; }
+        public virtual DbSet<DanhMucSanPham> DanhMucSanPhams { get; set; }
+        public virtual DbSet<DichVu> DichVus { get; set; }
+        public virtual DbSet<DonHang> DonHangs { get; set; }
+        public virtual DbSet<KhachHang> KhachHangs { get; set; }
+        public virtual DbSet<NhanVien> NhanViens { get; set; }
+        public virtual DbSet<PhieuQuaTang> PhieuQuaTangs { get; set; }
+        public virtual DbSet<SanPham> SanPhams { get; set; }
+        public virtual DbSet<ThuongHieu> ThuongHieux { get; set; }
     }
 }

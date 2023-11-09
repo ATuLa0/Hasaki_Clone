@@ -12,17 +12,13 @@ namespace Hasaki.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class HOADON
+    public partial class ChiTietDonHang
     {
-        public System.DateTime NGAY { get; set; }
-        public string MASP { get; set; }
-        public string MAKH { get; set; }
-        public Nullable<int> SOLUONG { get; set; }
+        public int DonHangID { get; set; }
+        public int SanPhamID { get; set; }
+        public Nullable<int> SoLuong { get; set; }
     
-        public virtual KHACHHANG KHACHHANG { get; set; }
-        public virtual KHACHHANG KHACHHANG1 { get; set; }
-        public virtual KHACHHANG KHACHHANG2 { get; set; }
-        public virtual KHACHHANG KHACHHANG3 { get; set; }
-        public virtual SANPHAM SANPHAM { get; set; }
+        public virtual DonHang DonHang { get; set; }
+        public virtual SanPham SanPham { get; set; }
     }
 }

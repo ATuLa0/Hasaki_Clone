@@ -12,29 +12,22 @@ namespace Hasaki.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class KHACHHANG
+    public partial class KhachHang
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public KHACHHANG()
+        public KhachHang()
         {
-            this.HOADONs = new HashSet<HOADON>();
-            this.HOADONs1 = new HashSet<HOADON>();
-            this.HOADONs2 = new HashSet<HOADON>();
-            this.HOADONs3 = new HashSet<HOADON>();
+            this.DonHangs = new HashSet<DonHang>();
         }
     
-        public string MAKH { get; set; }
-        public string TENKH { get; set; }
-        public string LOAIKH { get; set; }
+        public int KhachHangID { get; set; }
+        public string TenKhachHang { get; set; }
+        public string Email { get; set; }
+        public string SoDienThoai { get; set; }
+        public string TenDangNhap { get; set; }
+        public string MatKhau { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HOADON> HOADONs { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HOADON> HOADONs1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HOADON> HOADONs2 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HOADON> HOADONs3 { get; set; }
-        public virtual LOAIKH LOAIKH1 { get; set; }
+        public virtual ICollection<DonHang> DonHangs { get; set; }
     }
 }

@@ -12,19 +12,21 @@ namespace Hasaki.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class LOAIKH
+    public partial class DonHang
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public LOAIKH()
+        public DonHang()
         {
-            this.KHACHHANGs = new HashSet<KHACHHANG>();
+            this.ChiTietDonHangs = new HashSet<ChiTietDonHang>();
         }
     
-        public string MAL { get; set; }
-        public string TENL { get; set; }
-        public Nullable<double> CHIETKHAU { get; set; }
+        public int DonHangID { get; set; }
+        public Nullable<int> KhachHangID { get; set; }
+        public Nullable<System.DateTime> NgayDatHang { get; set; }
+        public Nullable<double> TongTien { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<KHACHHANG> KHACHHANGs { get; set; }
+        public virtual ICollection<ChiTietDonHang> ChiTietDonHangs { get; set; }
+        public virtual KhachHang KhachHang { get; set; }
     }
 }

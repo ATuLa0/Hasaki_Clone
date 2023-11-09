@@ -12,18 +12,19 @@ namespace Hasaki.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class DMKHOA
+    public partial class ThuongHieu
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public DMKHOA()
+        public ThuongHieu()
         {
-            this.DMSVs = new HashSet<DMSV>();
+            this.SanPhams = new HashSet<SanPham>();
         }
     
-        public string MaKhoa { get; set; }
-        public string TenKhoa { get; set; }
+        public int ThuongHieuID { get; set; }
+        public string TenThuongHieu { get; set; }
+        public string MoTa { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DMSV> DMSVs { get; set; }
+        public virtual ICollection<SanPham> SanPhams { get; set; }
     }
 }

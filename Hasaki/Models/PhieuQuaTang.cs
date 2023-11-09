@@ -12,12 +12,10 @@ namespace Hasaki.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class KHUYENMAI
+    public partial class PhieuQuaTang
     {
-        public int MaKM { get; set; }
-        public string TenKM { get; set; }
-        public string MoTa { get; set; }
-        public Nullable<System.DateTime> NgayBatDau { get; set; }
-        public Nullable<System.DateTime> NgayKetThuc { get; set; }
+        public int PhieuQuaTangID { get; set; }
+        public Nullable<int> KhachHangID { get; set; }
+        public string MaGiamGia { get; set; }
     }
 }

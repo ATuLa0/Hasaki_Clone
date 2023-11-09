@@ -12,19 +12,35 @@ namespace Hasaki.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class SANPHAM
+    public partial class SanPham
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public SANPHAM()
+        public SanPham()
         {
-            this.HOADONs = new HashSet<HOADON>();
+            this.ChiTietDonHangs = new HashSet<ChiTietDonHang>();
+            this.DanhMucSanPhams = new HashSet<DanhMucSanPham>();
         }
     
-        public string MASP { get; set; }
-        public string TENSP { get; set; }
-        public Nullable<int> GIA { get; set; }
+        public int SanPhamID { get; set; }
+        public string TenSanPham { get; set; }
+        public string HinhAnh { get; set; }
+        public string MoTa { get; set; }
+        public Nullable<double> Gia { get; set; }
+        public string DungTich { get; set; }
+        public string ThuongHieu { get; set; }
+        public string XuatXu { get; set; }
+        public string LoaiDaPhuHop { get; set; }
+        public Nullable<double> DoPH { get; set; }
+        public string CongDung { get; set; }
+        public string ThanhPhanChinh { get; set; }
+        public string CachSuDung { get; set; }
+        public string LuuY { get; set; }
+        public Nullable<int> ThuongHieuID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HOADON> HOADONs { get; set; }
+        public virtual ICollection<ChiTietDonHang> ChiTietDonHangs { get; set; }
+        public virtual ThuongHieu ThuongHieu1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DanhMucSanPham> DanhMucSanPhams { get; set; }
     }
 }

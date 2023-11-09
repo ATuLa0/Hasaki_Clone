@@ -12,24 +12,19 @@ namespace Hasaki.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class CHUCVU
+    public partial class DanhMucSanPham
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public CHUCVU()
+        public DanhMucSanPham()
         {
-            this.NHANVIENs = new HashSet<NHANVIEN>();
-            this.NHANVIENs1 = new HashSet<NHANVIEN>();
-            this.NHANVIENs2 = new HashSet<NHANVIEN>();
+            this.SanPhams = new HashSet<SanPham>();
         }
     
-        public string MaCV { get; set; }
-        public string TenCV { get; set; }
+        public int DanhMucSanPhamID { get; set; }
+        public string TenDanhMuc { get; set; }
+        public string MoTa { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<NHANVIEN> NHANVIENs { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<NHANVIEN> NHANVIENs1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<NHANVIEN> NHANVIENs2 { get; set; }
+        public virtual ICollection<SanPham> SanPhams { get; set; }
     }
 }
