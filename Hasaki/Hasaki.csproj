@@ -184,12 +184,16 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\hasaki-0.0.100.min.css" />
     <Content Include="Content\hasaki-0.0.97.min.css" />
     <Content Include="Content\hasaki-0.1.314.min.css" />
+    <Content Include="Content\hasaki-0.1.326.min.css" />
     <Content Include="Content\hasaki-app-0.1.314.min.js" />
     <Content Include="Content\hasaki-base-0.0.8.min.js" />
     <Content Include="Content\hasaki-google-0.0.26.min.js" />
+    <Content Include="Content\hasaki-v4-0.0.100.min.css" />
     <Content Include="Content\hasaki-v4-0.0.97.min.css" />
+    <Content Include="Content\hasaki-v4-header-footer-0.0.100.min.css" />
     <Content Include="Content\hasaki-v4-header-footer-0.0.97.min.css" />
     <Content Include="Content\hasaki_v3-0.0.73.js" />
     <Content Include="Content\hasaki_v4-0.0.73.js" />
@@ -219,6 +223,8 @@
     <Content Include="Models\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
+    <Content Include="Content\new.css" />
+    <Content Include="Content\css2.css" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -241,11 +247,13 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\LoginResgis\Login.cshtml" />
+    <Content Include="Views\LoginResgis\Regis.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Helper\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
