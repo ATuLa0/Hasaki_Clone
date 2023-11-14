@@ -21,5 +21,20 @@ namespace Hasaki.Controllers
             var products = SanPhamMoi(4);
             return View(products);
         }
+        public ActionResult DanhMucPartial()
+        {
+            var dsDanhMuc = db.DanhMucSanPhams.ToList();
+            return PartialView(dsDanhMuc);
+        }
+        public ActionResult SPTheoDanhMuc(int id)
+        {
+            var sps = db.SanPhams.Where(sp => sp.DanhMucSanPhams.Any(dm => dm.DanhMucSanPhamID == id)).ToList();
+            return View("Index",sps);
+        }
+        public ActionResult ChiTietSP(int id)
+        {
+            var sps = db.SanPhams.FirstOrDefault(sp => sp.SanPhamID == id);
+            return View(sps);
+        }
     }
 }

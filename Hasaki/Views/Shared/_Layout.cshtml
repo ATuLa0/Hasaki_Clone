@@ -235,11 +235,7 @@
                     </a>
                 </div>
                 <div class="item_header item_header_giohang minicart-wrapper">
-                    <a href="https://hasaki.vn/checkout/cart" class="icon_header relative">
-                        <img src="https://hasaki.vn/images/graphics/icon_header_1.svg" alt="" class="loading"
-                             data-was-processed="true">
-                        <span class="counter_number counter qty">0</span>
-                    </a>
+                    @Html.Action("TongSLPartial","GioHang")
                 </div>
             </div>
         </div>
@@ -250,55 +246,7 @@
                 <a class="txt_color_1 menu_hamber" href="#">
                     DANH MỤC
                 </a>
-                <div id="sub_menu_web">
-                    <div class="col_menu_cap1">
-                        <div class="sub_item_menu">
-                            <a class="parent_menu" href="/danh-muc/suc-khoe-lam-dep-c3.html">
-                                <strong>Sức Khỏe - Làm Đẹp</strong>
-                            </a>
-                        </div>
-                        <div class="sub_item_menu">
-                            <a class="parent_menu" href="/danh-muc/my-pham-high-end-c1907.html">
-                                Mỹ Phẩm High-End                                                                    <em class="fa fa-angle-right"> </em>
-                            </a>
-                        </div>
-                        <div class="sub_item_menu">
-                            <a class="parent_menu" href="/danh-muc/cham-soc-da-mat-c4.html">
-                                Chăm Sóc Da Mặt                                                                    <em class="fa fa-angle-right"> </em>
-                            </a>
-                        </div>
-                        <div class="sub_item_menu">
-                            <a class="parent_menu" href="/danh-muc/trang-diem-c23.html">
-                                Trang Điểm                                                                    <em class="fa fa-angle-right"> </em>
-                            </a>
-                        </div>
-                        <div class="sub_item_menu">
-                            <a class="parent_menu" href="/danh-muc/cham-soc-toc-c96.html">
-                                Chăm Sóc Tóc Và Da Đầu                                                                    <em class="fa fa-angle-right"> </em>
-                            </a>
-                        </div>
-                        <div class="sub_item_menu">
-                            <a class="parent_menu" href="/danh-muc/cham-soc-co-the-c12.html">
-                                Chăm Sóc Cơ Thể                                                                    <em class="fa fa-angle-right"> </em>
-                            </a> 
-                        </div>
-                        <div class="sub_item_menu">
-                            <a class="parent_menu" href="/danh-muc/cham-soc-ca-nhan-c2049.html">
-                                Chăm Sóc Cá Nhân                                                                    <em class="fa fa-angle-right"> </em>
-                            </a>                       
-                        </div>
-                        <div class="sub_item_menu">
-                            <a class="parent_menu" href="/danh-muc/nuoc-hoa-c103.html">
-                                Nước Hoa                                                                    <em class="fa fa-angle-right"> </em>
-                            </a>
-                        </div>
-                        <div class="sub_item_menu">
-                            <a class="parent_menu" href="/danh-muc/thuc-pham-chuc-nang-c156.html">
-                                Thực Phẩm Chức Năng                                                                    <em class="fa fa-angle-right"> </em>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                @Html.Action("DanhMucPartial","Home")
             </div>
 
             <div class="item_sub_menu_bar left">

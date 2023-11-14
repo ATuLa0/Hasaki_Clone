@@ -402,7 +402,7 @@
           <End Type="HasakiDatabaseModel.DanhMucSanPham" Role="DanhMucSanPham" Multiplicity="*" />
           <End Type="HasakiDatabaseModel.SanPham" Role="SanPham" Multiplicity="*" />
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
