@@ -1,14 +1,16 @@
 ﻿
 @{
-    ViewBag.Title = "Login";
+    ViewBag.Title = "SetPass";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@using (Html.BeginForm("Login", "LoginResgis"))
+
+@using (Html.BeginForm("SetPass", "LoginResgis"))
 {
     <div id="lg_login">
         <div class="sub_login">
             <div class="main_content_sub_login">
-                <h2 style="text-align: center">ĐĂNG NHẬP</h2>
+                <h2 style="text-align: center">NHẬP MẬT KHẨU MỚI</h2>
+                <h2 style="color: red;">@ViewBag.ThongBao</h2>
                 <div class="block_more_login">
                     <form id="form-head-login" action="https://hasaki.vn/login" method="post" novalidate="novalidate">
                         <input name="form_key" type="hidden" value="9lB2QzSyHmzVefcW">
@@ -16,38 +18,30 @@
                         @Html.ValidationSummary(true)
                         <div class="form-group">
                             <div class="relative">
-                                <label for="email">Email:</label>
-                                @Html.TextBox("Email", null, new
+                                <label for="matkhau1">Mật khẩu:</label>
+                                @Html.Password("MatKhau1", null, new
                                 {
                                     @class = "form-control",
                                     @id =
-                               "email",
+                               "matkhau1",
                                     required = "required"
                                 })
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="relative">
-                                <label for="matkhau">Mật khẩu:</label>
-                                @Html.Password("MatKhau", null, new
+                                <label for="matkhau2">Nhập lại mật khẩu:</label>
+                                @Html.Password("MatKhau2", null, new
                                 {
                                     @class = "form-control",
                                     @id =
-                               "matkhau",
+                               "matkhau2",
                                     required = "required"
                                 })
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label class="checkbox-inline">
-                                <input type="checkbox" value="1"> Nhớ mật khẩu
-                            </label>
-                            @Html.ActionLink("Quên mật khẩu", "ForgotPass", "LoginResgis", null, new { @class = "popup-forgot txt_color_1 pull-right" })
-                            <div class="clearfix"></div>
-                        </div>
-                        <button type="submit" class="btn btn_site_1">Đăng nhập</button>
+                        <button type="submit" class="btn btn_site_1">Đặt lại mật khẩu</button>
                     </form>
-                    Bạn chưa có tài khoản? @Html.ActionLink("Đăng ký ngay", "Regis", "LoginResgis", null, new { @class = "txt_color_1 text-uppercase popup-login-dismiss popup-register" })
                 </div>
             </div>
         </div>
