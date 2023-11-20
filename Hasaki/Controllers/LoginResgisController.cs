@@ -47,7 +47,8 @@ namespace Hasaki.Controllers
                     var khach = db.KhachHangs.FirstOrDefault(k => k.Email == kh.Email && k.MatKhau.ToLower() == matkhau.ToString());
                     if (khach != null)
                     {
-                        Session["TaiKhoan"] = khach;
+                        Session["Name"] = khach.TenDangNhap;
+                        Session["IDuser"] = khach.KhachHangID;
                     }
                     else
                     {
@@ -59,7 +60,7 @@ namespace Hasaki.Controllers
                         }
                         ModelState.AddModelError(string.Empty, "Tài khoản không tồn tại");
                         return View();
-                    }
+                    }       
                 }
             }
             return RedirectToAction("Index", "Home");
@@ -209,7 +210,7 @@ namespace Hasaki.Controllers
         [HttpPost]
         public ActionResult SetPass(string matkhau1, string matkhau2, int? rdn)
         {
-            if (rdn != null || (Session["email"] != null && Session["check"] != null))
+            if ((rdn != null || (Session["email"] != null) && Session["check"] != null))
             {
                 if (matkhau1 != matkhau2)
                 {
@@ -235,7 +236,8 @@ namespace Hasaki.Controllers
                 }
                 return RedirectToAction("Finish","LoginResgis");
             }
-            return RedirectToAction("Forgot","LoginResgis");
+            ViewBag.ThongBao = "Hệ thống đang gặp lỗi. Hãy sử dụng mã xác thực của bạn";
+            return View();
         }
 
         public ActionResult Finish() { return View(); }

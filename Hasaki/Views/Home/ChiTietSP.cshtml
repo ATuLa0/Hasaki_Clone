@@ -76,9 +76,7 @@
                                         <div class="control">
                                             <span class="txt_soluong">Số lượng: </span>
                                             <div class="wrap_qty">
-                                                <input type="text" class="input-text qty" name="qty" id="qty" value="1" title="Số lượng" maxlength="6" min="1" max="50" data-val="1" data-max="50" data-action="">
-                                                <span class="up" data-max="50"><i class="fa fa-caret-up"></i></span>
-                                                <span class="down"><i class="fa fa-caret-down"></i></span>
+                                                <input type="number" value="1" min="1" name="Quantity" class="quantityInput" data-productid="@Model.SanPhamID" />
                                             </div>
                                             <span id="stockMin" class="txt_color_2 txt_12"></span>
                                         </div>
@@ -91,7 +89,7 @@
                                     </div>
                                     <div class="actions">
                                         <div>
-                                            <button class="btn btn_site_3 _btnAddToCart" id="product-addtocart-button" title="Thêm vào giỏ hàng" onclick="location.href='@Url.Action("ThemVaoGioHang","GioHang", new {id = Model.SanPhamID})'">
+                                            <button class="btn btn_site_3 _btnAddToCart" id="product-addtocart-button" title="Thêm vào giỏ hàng">
                                                 <span>Giỏ hàng</span>
                                             </button>
                                         </div>

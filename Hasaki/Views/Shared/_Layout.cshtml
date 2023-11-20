@@ -183,37 +183,8 @@
                         <img src="https://hasaki.vn/images/graphics/icon_header_2.svg"
                              alt="" class="loading" data-was-processed="true">
                     </a>
-                    <div class="text_1_header">
-                        <a href="#popup-login" id="btn-login" rel="nofollow" class="popup-login txt_header_right">
-                            Đăng
-                            nhập
-                        </a> /
-                        <a href="#popup-register" rel="nofollow" class="popup-register txt_header_right">
-                            Đăng
-                            ký
-                        </a>
-                    </div>
-                    <div class="text_1_header">
-                        <a href="javascript:;" class="txt_link_hasaki txt_header_right" rel="nofollow">
-                            Tài khoản <span class="icon_carret_down"></span>
-                        </a>
-                    </div>
-                    <div class="sub_login">
-                        <div class="main_content_sub_login">
-                            <span class="arrow_sub_login"><span class="icon_carret_down"></span></span>
-                            <div class="block_login_fb">
-                                <div class="space_bottom_5"></div>
-                            </div>
-                            <div class="block_more_login">
-                                <div class="space_bottom_10 text-center"></div>
-                                @Html.ActionLink("Đăng nhập", "Login", "LoginResgis", null, new { @id = "hskLoginButton", @class = "btn btn_site_1 popup-login", @rel = "nofollow" })
-                                Bạn chưa có tài khoản? @Html.ActionLink("Đăng ký ngay", "Regis", "LoginResgis", null, new { @class = "txt_color_1 text-uppercase popup-register", @rel = "nofollow" })
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                    @Html.Action("UserPatial","LoginResgis")
                 </div>
-
 
                 <div class="item_header item_header_hethong">
                     <a target="_blank" href="https://hotro.hasaki.vn/he-thong-cua-hang.html"

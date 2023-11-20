@@ -22,7 +22,7 @@ namespace Hasaki.Controllers
 
         public ActionResult TongSLPartial()
         {
-            ViewBag.TongSL = TongSL();
+            Session["TongSL"] = TongSL();
             return PartialView();
         }
 
@@ -37,7 +37,7 @@ namespace Hasaki.Controllers
             return gioHangs;
         }
 
-        public ActionResult ThemVaoGioHang(int id)
+        public ActionResult ThemVaoGioHang(int id, int Quantity)
         {
             List<GioHang> gioHangs = LayGioHang();
             GioHang sp = gioHangs.FirstOrDefault(s => s.SanPhamID == id);
@@ -48,7 +48,7 @@ namespace Hasaki.Controllers
             }
             else
             {
-                sp.SoLuong++;
+                sp.SoLuong += Quantity;
             }
             return RedirectToAction("ChiTietSP", "Home", new {id = id});
         }
@@ -73,5 +73,32 @@ namespace Hasaki.Controllers
             return tongTien;
         }
 
+        public ActionResult XoaSP(int id)
+        {
+            List<GioHang> gioHang = LayGioHang();
+            var sanpham = gioHang.FirstOrDefault(s => s.SanPhamID == id);
+            if (sanpham != null)
+            {
+                gioHang.RemoveAll(s => s.SanPhamID == id);
+                return RedirectToAction("Index");
+            }
+            if (gioHang.Count == 0)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            return RedirectToAction("Index");
+        }
+        public ActionResult CapNhatSL(int id, int Quantity)
+        {
+            List<GioHang> gioHang = LayGioHang();
+            var sp = gioHang.FirstOrDefault(s => s.SanPhamID == id);
+            if (sp != null)
+            {
+                sp.SoLuong = Quantity;
+            }
+            // Lưu lại danh sách giỏ hàng mới vào session
+            Session["GioHang"] = gioHang;
+            return RedirectToAction("Index");
+        }
     }
 }
