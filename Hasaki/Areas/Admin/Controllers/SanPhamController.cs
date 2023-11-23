@@ -16,68 +16,92 @@ namespace Hasaki.Areas.Admin.Controllers
         // GET: Admin/SanPham
         public ActionResult DanhSachSP()
         {
-            var dssp = db.SanPhams.ToList();
-            return View(dssp);
+            if (Session["Name"] != null)
+            {
+                var dssp = db.SanPhams.ToList();
+                return View(dssp);
+            }
+            return RedirectToAction("Login", "LoginRegis");
         }
         [HttpGet]
         public ActionResult ThemSP()
         {
-            ViewBag.ThuongHieuID = new SelectList(db.ThuongHieux, "ThuongHieuID", "TenThuongHieu");
-            return View();
+            if (Session["Name"] != null)
+            {
+                ViewBag.ThuongHieuID = new SelectList(db.ThuongHieux, "ThuongHieuID", "TenThuongHieu");
+                return View();
+            }
+            return RedirectToAction("Login", "LoginRegis");
         }
         [HttpPost]
         public ActionResult ThemSP(SanPham sp)
         {
-            if (!ModelState.IsValid)
+            if (Session["Name"] != null)
             {
-                return View(sp);
+                if (!ModelState.IsValid)
+                {
+                    return View(sp);
+                }
+
+                db.SanPhams.Add(sp);
+                db.SaveChanges();
+
+                return RedirectToAction("DanhSachSP");
             }
-
-            db.SanPhams.Add(sp);
-            db.SaveChanges();
-
-            return RedirectToAction("DanhSachSP");
+            return RedirectToAction("Login", "LoginRegis");
         }
         public ActionResult Delete(int id)
         {
-            try
+            if (Session["Name"] != null)
             {
-                var product = db.SanPhams.Find(id);
-                db.SanPhams.Remove(product);
-                db.SaveChanges();
-            }
-            catch (Exception)
-            {
+                try
+                {
+                    var product = db.SanPhams.Find(id);
+                    db.SanPhams.Remove(product);
+                    db.SaveChanges();
+                }
+                catch (Exception)
+                {
+                    return RedirectToAction("DanhSachSP");
+                }
+
                 return RedirectToAction("DanhSachSP");
             }
-
-            return RedirectToAction("DanhSachSP");
+            return RedirectToAction("Login", "LoginRegis");
         }
         public ActionResult Details(int? id)
         {
-            if (id == null)
+            if (Session["Name"] != null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                SanPham sp = db.SanPhams.Find(id);
+                if (sp == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(sp);
             }
-            SanPham sp = db.SanPhams.Find(id);
-            if (sp == null)
-            {
-                return HttpNotFound();
-            }
-            return View(sp);
+            return RedirectToAction("Login", "LoginRegis");
         }
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            ViewBag.ThuongHieuID = new SelectList(db.ThuongHieux, "ThuongHieuID", "TenThuongHieu");
-            var product = db.SanPhams.Find(id);
-            if (product == null)
+            if (Session["Name"] != null)
             {
-                // Xử lý trường hợp không tìm thấy sản phẩm
-                return HttpNotFound();
-            }
+                ViewBag.ThuongHieuID = new SelectList(db.ThuongHieux, "ThuongHieuID", "TenThuongHieu");
+                var product = db.SanPhams.Find(id);
+                if (product == null)
+                {
+                    // Xử lý trường hợp không tìm thấy sản phẩm
+                    return HttpNotFound();
+                }
 
-            return View(product);
+                return View(product);
+            }
+            return RedirectToAction("Login", "LoginRegis");
         }
         [HttpPost]
         [ValidateAntiForgeryToken]

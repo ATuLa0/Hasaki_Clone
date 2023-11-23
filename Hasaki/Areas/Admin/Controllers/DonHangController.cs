@@ -14,39 +14,52 @@ namespace Hasaki.Areas.Admin.Controllers
         // GET: Admin/DonHang
         public ActionResult DanhSachDH()
         {
-            var dh = db.DonHangs.ToList();
-            return View(dh);
+            if (Session["Name"] != null)
+            {
+                var dh = db.DonHangs.ToList();
+                return View(dh);
+            }
+            return RedirectToAction("Login", "LoginRegis");
         }
         public ActionResult Delete(int id)
         {
-            try
+            if (Session["Name"] != null)
             {
-                var ctdh = db.ChiTietDonHangs.Where(d => d.DonHangID == id);
-                db.ChiTietDonHangs.RemoveRange(ctdh);
 
-                var dh = db.DonHangs.Find(id);
-                db.DonHangs.Remove(dh);
-                db.SaveChanges();
-            }
-            catch (Exception)
-            {
+                try
+                {
+                    var ctdh = db.ChiTietDonHangs.Where(d => d.DonHangID == id);
+                    db.ChiTietDonHangs.RemoveRange(ctdh);
+
+                    var dh = db.DonHangs.Find(id);
+                    db.DonHangs.Remove(dh);
+                    db.SaveChanges();
+                }
+                catch (Exception)
+                {
+                    return RedirectToAction("DanhSachDH");
+                }
+
                 return RedirectToAction("DanhSachDH");
             }
-
-            return RedirectToAction("DanhSachDH");
+            return RedirectToAction("Login", "LoginRegis");
         }
         public ActionResult Details(int? id)
         {
-            if (id == null)
+            if (Session["Name"] != null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                var ctdh = db.ChiTietDonHangs.Where(p => p.DonHangID == id);
+                if (ctdh == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(ctdh);
             }
-            var ctdh = db.ChiTietDonHangs.Where(p => p.DonHangID == id);
-            if (ctdh == null)
-            {
-                return HttpNotFound();
-            }
-            return View(ctdh);
+            return RedirectToAction("Login", "LoginRegis");
         }
     }
 }

@@ -16,68 +16,92 @@ namespace Hasaki.Areas.Admin.Controllers
         // GET: Admin/DanhMuc
         public ActionResult DanhSachDM()
         {
+            if (Session["Name"] != null)
+            {
             var cate = db.DanhMucSanPhams.ToList();
             return View(cate);
+            }
+            return RedirectToAction("Login", "LoginRegis");
         }
         [HttpGet]
         public ActionResult Create()
         {
-            return View();
+            if (Session["Name"] != null)
+            {
+                return View();
+            }
+            return RedirectToAction("Login", "LoginRegis");
         }
         [HttpPost]
         public ActionResult Create(DanhMucSanPham cate)
         {
-            if (!ModelState.IsValid)
+            if (Session["Name"] != null)
             {
-                return View(cate);
+                if (!ModelState.IsValid)
+                {
+                    return View(cate);
+                }
+
+                db.DanhMucSanPhams.Add(cate);
+                db.SaveChanges();
+
+                return RedirectToAction("DanhSachDM");
             }
-
-            db.DanhMucSanPhams.Add(cate);
-            db.SaveChanges();
-
-            return RedirectToAction("DanhSachDM");
+            return RedirectToAction("Login", "LoginRegis");
         }
         public ActionResult Delete(int id)
         {
-            try
+            if (Session["Name"] != null)
             {
-                var cate = db.DanhMucSanPhams.Find(id);
-                db.DanhMucSanPhams.Remove(cate);
-                db.SaveChanges();
-            }
-            catch (Exception)
-            {
-                // Dính liên kết tới các bảng khác sẽ reload lại trang không thực hiện tác vụ
+                try
+                {
+                    var cate = db.DanhMucSanPhams.Find(id);
+                    db.DanhMucSanPhams.Remove(cate);
+                    db.SaveChanges();
+                }
+                catch (Exception)
+                {
+                    // Dính liên kết tới các bảng khác sẽ reload lại trang không thực hiện tác vụ
+                    return RedirectToAction("DanhSachDM");
+                }
+
                 return RedirectToAction("DanhSachDM");
             }
-
-            return RedirectToAction("DanhSachDM");
+            return RedirectToAction("Login", "LoginRegis");
         }
 
         public ActionResult Details(int? id)
         {
-            if (id == null)
+            if (Session["Name"] != null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                DanhMucSanPham cate = db.DanhMucSanPhams.Find(id);
+                if (cate == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(cate);
             }
-            DanhMucSanPham cate = db.DanhMucSanPhams.Find(id);
-            if (cate == null)
-            {
-                return HttpNotFound();
-            }
-            return View(cate);
+            return RedirectToAction("Login", "LoginRegis");
         }
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            var cate = db.DanhMucSanPhams.Find(id);
-            if (cate == null)
+            if (Session["Name"] != null)
             {
-                // Xử lý trường hợp không tìm thấy sản phẩm
-                return HttpNotFound();
-            }
+                var cate = db.DanhMucSanPhams.Find(id);
+                if (cate == null)
+                {
+                    // Xử lý trường hợp không tìm thấy sản phẩm
+                    return HttpNotFound();
+                }
 
-            return View(cate);
+                return View(cate);
+            }
+            return RedirectToAction("Login", "LoginRegis");
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
