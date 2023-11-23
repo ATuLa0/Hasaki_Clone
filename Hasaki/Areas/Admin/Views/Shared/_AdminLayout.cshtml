@@ -31,9 +31,8 @@
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="#">Tài khoản nhân viên</a>
-                        <a class="collapse-item" href="#">Tài khoản khách hàng</a>
-                        @Html.ActionLink("Thông tin khách hàng", "Index", "KHACHHANGs", null, new { @class = "collapse-item" })
+                        @Html.ActionLink("Thông tin Danh mục", "DanhSachDM", "DanhMuc", null, new { @class = "collapse-item" })
+                        @Html.ActionLink("Thông tin sản phẩm", "DanhSachSP", "SanPham", null, new { @class = "collapse-item" })
                     </div>
                 </div>
             </li>
@@ -47,10 +46,7 @@
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                      data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        @Html.ActionLink("Quản lý bán xe", "Dathang", "Product", null, new { @class = "collapse-item" })
-                        @Html.ActionLink("Lưu trữ hóa đơn", "Index", "HOADONs", null, new { @class = "collapse-item" })
-                        <a class="collapse-item" href="#">Thống kê khách hàng mua</a>
-                        @Html.ActionLink("Thống kê xe bán", "DanhSachXeBanChay", "Product", null, new { @class = "collapse-item" })
+                        @Html.ActionLink("Thông tin Đơn hàng", "DanhSachDH", "DonHang", null, new { @class = "collapse-item" })
                     </div>
                 </div>
             </li>
@@ -63,10 +59,8 @@
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="#">Thống kê số lượng xe tồn</a>
-                        <a class="collapse-item" href="#">Thống kê tình trạng xe</a>
-                        @Html.ActionLink("Quản lý Xe", "Index", "Product", null, new { @class = "collapse-item" })
-                        @Html.ActionLink("Quản lý NCC", "Index", "Provider", null, new { @class = "collapse-item" })
+                        <a class="collapse-item" href="#">Thống kê số lượng sản phẩm</a>
+                        <a class="collapse-item" href="#">Thống kê</a>
                     </div>
                 </div>
             </li>

@@ -16,6 +16,15 @@ namespace Hasaki.Controllers
         {
             return db.SanPhams.OrderByDescending(sp => sp.SanPhamID).Take(soluong).ToList();
         }
+        public ActionResult Search(string SearchString = "")
+        {
+            if (SearchString != "")
+            {
+                var sp = db.SanPhams.Where(x => x.TenSanPham.ToUpper().Contains(SearchString.ToUpper()));
+                return View(sp.ToList());
+            }
+            return RedirectToAction("Index");
+        }
         public ActionResult Index()
         {
             var products = SanPhamMoi(4);

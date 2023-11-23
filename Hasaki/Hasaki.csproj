@@ -2106,6 +2106,7 @@
     <Content Include="Views\LoginResgis\Finish.cshtml" />
     <Content Include="Views\LoginResgis\UserPatial.cshtml" />
     <Content Include="Views\GioHang\DatHangThanhCong.cshtml" />
+    <Content Include="Views\Home\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

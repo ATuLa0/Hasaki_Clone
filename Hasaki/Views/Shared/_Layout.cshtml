@@ -155,20 +155,14 @@
                     <div class="v3_block_search_header">
                         <div class="relative width_common">
                             <div class="v3_block_input_search width_common">
+                                @using (Html.BeginForm("Search","Home"))
+                                {
                                 <div class="control">
-                                    <input id="search"
-                                           placeholder="Deal 7 Ngày 3K-5K | Áp Dụng Tại CN 135 Gò Vấp, TP.HCM (Từ 23-29/10)"
-                                           class="input_search" name="q" data-box-parent="#block_suggest_search"
-                                           autocomplete="off" value="" aria-haspopup="false"
-                                           campaign-rel="[{&quot;label&quot;:&quot;Deal 7 Ngày 1K-5K | Tại Chi Nhánh Mới Đống Đa, Hà Nội (Từ 23-29/10)&quot;,&quot;url&quot;:&quot;https://hasaki.vn/campaign/khai-truong-chi-nhanh-moi-ha-noi?utm_medium=cpc&amp;utm_source=top_search&amp;utm_campaign=khai-truong-chi-nhanh-moi-ha-noi&amp;utm_term=khai-truong-chi-nhanh-moi-ha-noi_231023&quot;,&quot;image&quot;:&quot;https://media.hcdn.vn/&quot;,&quot;end_time&quot;:1698598740,&quot;start_time&quot;:1697994000},{&quot;label&quot;:&quot;Deal 7 Ngày 3K-5K | Áp Dụng Tại CN 135 Gò Vấp, TP.HCM (Từ 23-29/10)&quot;,&quot;url&quot;:&quot;https://hasaki.vn/campaign/khai-truong-chi-nhanh-135?utm_medium=cpc&amp;utm_source=top_search&amp;utm_campaign=khai-truong-chi-nhanh-135&amp;utm_term=khai-truong-chi-nhanh-135_231023&quot;,&quot;image&quot;:&quot;https://media.hcdn.vn/&quot;,&quot;end_time&quot;:1698598740,&quot;start_time&quot;:1697994000},{&quot;label&quot;:&quot;Top Bán Chạy Tháng 10 | Mua 1 Tặng 1 Giảm Đến 50% (SL Có Hạn)&quot;,&quot;url&quot;:&quot;https://hasaki.vn/campaign/best-seller?utm_medium=cpc&amp;utm_source=top_search&amp;utm_campaign=top-ban-chay-thang-10-2023&amp;utm_term=top-ban-chay_021023&quot;,&quot;image&quot;:&quot;https://media.hcdn.vn/&quot;,&quot;end_time&quot;:1698771540,&quot;start_time&quot;:1696179600}]">
+                                    @Html.TextBox("SearchString", "", new {@class = "form-control", placeholder = "Tìm kiếm" })
+                                    <input type="submit" class="btn btn-default" value="search" />
                                 </div>
 
-                                <div class="actions">
-                                    <button type="submit" title="Search" class="btn_submit_search">
-                                        <img src="https://hasaki.vn/v3/images/icons/search_icon.svg"
-                                             class="icon_search loading" alt="" data-was-processed="true">
-                                    </button>
-                                </div>
+                                }
                             </div>
                             <div id="block_suggest_search" class="block_suggest_search" style="display:none;">
                             </div>
