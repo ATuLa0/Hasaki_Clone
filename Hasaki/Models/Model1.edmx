@@ -13,6 +13,7 @@
           <Property Name="DonHangID" Type="int" Nullable="false" />
           <Property Name="SanPhamID" Type="int" Nullable="false" />
           <Property Name="SoLuong" Type="int" />
+          <Property Name="DonGia" Type="float" />
         </EntityType>
         <EntityType Name="DanhMucSanPham">
           <Key>
@@ -39,6 +40,9 @@
           <Property Name="KhachHangID" Type="int" />
           <Property Name="NgayDatHang" Type="date" />
           <Property Name="TongTien" Type="float" />
+          <Property Name="ThanhToan" Type="nvarchar" MaxLength="50" />
+          <Property Name="GiaTien" Type="float" />
+          <Property Name="DaGiao" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="KhachHang">
           <Key>
@@ -129,7 +133,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DonHang__KhachHa__47DBAE45">
+        <Association Name="FK__DonHang__DaGiao__47DBAE45">
           <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="0..1" />
           <End Role="DonHang" Type="Self.DonHang" Multiplicity="*" />
           <ReferentialConstraint>
@@ -196,7 +200,7 @@
             <End Role="SanPham" EntitySet="SanPham" />
             <End Role="ChiTietDonHang" EntitySet="ChiTietDonHang" />
           </AssociationSet>
-          <AssociationSet Name="FK__DonHang__KhachHa__47DBAE45" Association="Self.FK__DonHang__KhachHa__47DBAE45">
+          <AssociationSet Name="FK__DonHang__DaGiao__47DBAE45" Association="Self.FK__DonHang__DaGiao__47DBAE45">
             <End Role="KhachHang" EntitySet="KhachHang" />
             <End Role="DonHang" EntitySet="DonHang" />
           </AssociationSet>
@@ -235,7 +239,7 @@
             <End Role="SanPham" EntitySet="SanPhams" />
             <End Role="ChiTietDonHang" EntitySet="ChiTietDonHangs" />
           </AssociationSet>
-          <AssociationSet Name="FK__DonHang__KhachHa__47DBAE45" Association="HasakiDatabaseModel.FK__DonHang__KhachHa__47DBAE45">
+          <AssociationSet Name="FK__DonHang__DaGiao__47DBAE45" Association="HasakiDatabaseModel.FK__DonHang__DaGiao__47DBAE45">
             <End Role="KhachHang" EntitySet="KhachHangs" />
             <End Role="DonHang" EntitySet="DonHangs" />
           </AssociationSet>
@@ -256,6 +260,7 @@
           <Property Name="DonHangID" Type="Int32" Nullable="false" />
           <Property Name="SanPhamID" Type="Int32" Nullable="false" />
           <Property Name="SoLuong" Type="Int32" />
+          <Property Name="DonGia" Type="Double" />
           <NavigationProperty Name="DonHang" Relationship="HasakiDatabaseModel.FK__ChiTietDo__DonHa__4AB81AF0" FromRole="ChiTietDonHang" ToRole="DonHang" />
           <NavigationProperty Name="SanPham" Relationship="HasakiDatabaseModel.FK__ChiTietDo__SanPh__4BAC3F29" FromRole="ChiTietDonHang" ToRole="SanPham" />
         </EntityType>
@@ -285,8 +290,11 @@
           <Property Name="KhachHangID" Type="Int32" />
           <Property Name="NgayDatHang" Type="DateTime" Precision="0" />
           <Property Name="TongTien" Type="Double" />
+          <Property Name="ThanhToan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GiaTien" Type="Double" />
+          <Property Name="DaGiao" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="ChiTietDonHangs" Relationship="HasakiDatabaseModel.FK__ChiTietDo__DonHa__4AB81AF0" FromRole="DonHang" ToRole="ChiTietDonHang" />
-          <NavigationProperty Name="KhachHang" Relationship="HasakiDatabaseModel.FK__DonHang__KhachHa__47DBAE45" FromRole="DonHang" ToRole="KhachHang" />
+          <NavigationProperty Name="KhachHang" Relationship="HasakiDatabaseModel.FK__DonHang__DaGiao__47DBAE45" FromRole="DonHang" ToRole="KhachHang" />
         </EntityType>
         <EntityType Name="KhachHang">
           <Key>
@@ -298,7 +306,7 @@
           <Property Name="SoDienThoai" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="TenDangNhap" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="MatKhau" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="DonHangs" Relationship="HasakiDatabaseModel.FK__DonHang__KhachHa__47DBAE45" FromRole="KhachHang" ToRole="DonHang" />
+          <NavigationProperty Name="DonHangs" Relationship="HasakiDatabaseModel.FK__DonHang__DaGiao__47DBAE45" FromRole="KhachHang" ToRole="DonHang" />
         </EntityType>
         <EntityType Name="NhanVien">
           <Key>
@@ -374,7 +382,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DonHang__KhachHa__47DBAE45">
+        <Association Name="FK__DonHang__DaGiao__47DBAE45">
           <End Type="HasakiDatabaseModel.KhachHang" Role="KhachHang" Multiplicity="0..1" />
           <End Type="HasakiDatabaseModel.DonHang" Role="DonHang" Multiplicity="*" />
           <ReferentialConstraint>
@@ -411,6 +419,7 @@
           <EntitySetMapping Name="ChiTietDonHangs">
             <EntityTypeMapping TypeName="HasakiDatabaseModel.ChiTietDonHang">
               <MappingFragment StoreEntitySet="ChiTietDonHang">
+                <ScalarProperty Name="DonGia" ColumnName="DonGia" />
                 <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
                 <ScalarProperty Name="SanPhamID" ColumnName="SanPhamID" />
                 <ScalarProperty Name="DonHangID" ColumnName="DonHangID" />
@@ -439,6 +448,9 @@
           <EntitySetMapping Name="DonHangs">
             <EntityTypeMapping TypeName="HasakiDatabaseModel.DonHang">
               <MappingFragment StoreEntitySet="DonHang">
+                <ScalarProperty Name="DaGiao" ColumnName="DaGiao" />
+                <ScalarProperty Name="GiaTien" ColumnName="GiaTien" />
+                <ScalarProperty Name="ThanhToan" ColumnName="ThanhToan" />
                 <ScalarProperty Name="TongTien" ColumnName="TongTien" />
                 <ScalarProperty Name="NgayDatHang" ColumnName="NgayDatHang" />
                 <ScalarProperty Name="KhachHangID" ColumnName="KhachHangID" />

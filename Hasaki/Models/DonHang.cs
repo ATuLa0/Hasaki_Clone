@@ -24,6 +24,9 @@ namespace Hasaki.Models
         public Nullable<int> KhachHangID { get; set; }
         public Nullable<System.DateTime> NgayDatHang { get; set; }
         public Nullable<double> TongTien { get; set; }
+        public string ThanhToan { get; set; }
+        public Nullable<double> GiaTien { get; set; }
+        public string DaGiao { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietDonHang> ChiTietDonHangs { get; set; }

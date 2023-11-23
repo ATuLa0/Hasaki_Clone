@@ -17,6 +17,7 @@ namespace Hasaki.Models
         public int DonHangID { get; set; }
         public int SanPhamID { get; set; }
         public Nullable<int> SoLuong { get; set; }
+        public Nullable<double> DonGia { get; set; }
     
         public virtual DonHang DonHang { get; set; }
         public virtual SanPham SanPham { get; set; }

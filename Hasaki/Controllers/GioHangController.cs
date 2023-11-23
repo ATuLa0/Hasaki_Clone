@@ -9,6 +9,7 @@ namespace Hasaki.Controllers
 {
     public class GioHangController : Controller
     {
+        HasakiDatabaseEntities db = new HasakiDatabaseEntities();
         // GET: GioHang
         public ActionResult Index()
         {
@@ -99,6 +100,35 @@ namespace Hasaki.Controllers
             // Lưu lại danh sách giỏ hàng mới vào session
             Session["GioHang"] = gioHang;
             return RedirectToAction("Index");
+        }
+        public ActionResult DatHang()
+        {
+            KhachHang kh = Session["TaiKhoan"] as KhachHang;
+            List<GioHang> giohang = LayGioHang();
+            DonHang donhang = new DonHang();
+            donhang.KhachHangID = kh.KhachHangID;
+            donhang.NgayDatHang = DateTime.Now;
+            donhang.TongTien = (float)TongTien();
+            donhang.DaGiao = "Đang xử lý";
+            donhang.ThanhToan = "Thanh toán khi nhận hàng";
+            
+            db.DonHangs.Add(donhang);
+            db.SaveChanges();
+            foreach (var sp in giohang)
+            {
+                ChiTietDonHang ctdh = new ChiTietDonHang();
+                ctdh.DonHangID = donhang.DonHangID;
+                ctdh.SoLuong = sp.SoLuong;
+                ctdh.DonGia = sp.Gia;
+                db.ChiTietDonHangs.Add(ctdh);
+            }
+            Session["GioHang"] = null;
+            return RedirectToAction("DatHangThanhCong");
+        }
+        public ActionResult DatHangThanhCong()
+        {
+            return View();
+
         }
     }
 }

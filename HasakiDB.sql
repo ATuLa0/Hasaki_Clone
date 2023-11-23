@@ -75,6 +75,9 @@ CREATE TABLE DonHang (
     KhachHangID INT,
     NgayDatHang DATE,
     TongTien FLOAT,
+	ThanhToan NVARCHAR(50),
+	GiaTien FLOAT,
+	DaGiao NVARCHAR(100)
     FOREIGN KEY (KhachHangID) REFERENCES KhachHang(KhachHangID)
 );
 
@@ -82,6 +85,7 @@ CREATE TABLE ChiTietDonHang (
     DonHangID INT,
     SanPhamID INT,
     SoLuong INT,
+	DonGia FLOAT,
     FOREIGN KEY (DonHangID) REFERENCES DonHang(DonHangID),
     FOREIGN KEY (SanPhamID) REFERENCES SanPham(SanPhamID),
 	PRIMARY KEY(DonHangID, SanPhamID)
@@ -170,14 +174,14 @@ VALUES
 (3, '2023-08-10', 3000000);
 
 -- Chèn dữ liệu vào bảng ChiTietDonHang
-INSERT INTO ChiTietDonHang (DonHangID, SanPhamID, SoLuong)
+INSERT INTO ChiTietDonHang (DonHangID, SanPhamID, SoLuong, DonGia)
 VALUES
-(1, 3, 2),
-(1, 2, 1),
-(2, 3, 3),
-(2, 2, 1),
-(3, 2, 1),
-(3, 3, 2);
+(1, 3, 2,675000),
+(1, 2, 1,650000),
+(2, 3, 3,300000),
+(2, 2, 1,300000),
+(3, 2, 1,200000),
+(3, 3, 2,400000);
 
 INSERT INTO NhanVien (TenNhanVien, VaiTro, TenDangNhap, MatKhau)
 VALUES

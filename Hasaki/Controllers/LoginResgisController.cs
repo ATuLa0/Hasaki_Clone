@@ -47,8 +47,9 @@ namespace Hasaki.Controllers
                     var khach = db.KhachHangs.FirstOrDefault(k => k.Email == kh.Email && k.MatKhau.ToLower() == matkhau.ToString());
                     if (khach != null)
                     {
-                        Session["Name"] = khach.TenDangNhap;
+                        Session["Name"] = khach.TenKhachHang;
                         Session["IDuser"] = khach.KhachHangID;
+                        Session["TaiKhoan"] = khach;
                     }
                     else
                     {
@@ -71,13 +72,15 @@ namespace Hasaki.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Regis(string email, string matkhau1, string matkhau2)
+        public ActionResult Regis(string email, string tenkhachhang, string matkhau1, string matkhau2)
         {
             var db = new HasakiDatabaseEntities();
             if (ModelState.IsValid)
             {
                 if (string.IsNullOrEmpty(email))
                     ModelState.AddModelError(string.Empty, "Email không được để trống");
+                if (string.IsNullOrEmpty(tenkhachhang))
+                    ModelState.AddModelError(string.Empty, "Tên không được để trống");
                 if (string.IsNullOrEmpty(matkhau1))
                     ModelState.AddModelError(string.Empty, "Mật khẩu không được để trống");
                 if (string.IsNullOrEmpty(matkhau2))
@@ -105,6 +108,7 @@ namespace Hasaki.Controllers
                         KhachHang khachhang = new KhachHang();
                         khachhang.Email = email;
                         khachhang.MatKhau = sb.ToString();
+                        khachhang.TenKhachHang = tenkhachhang;
                         db.KhachHangs.Add(khachhang);
                         db.SaveChanges();
                         // Gửi email đăng ký thành công
