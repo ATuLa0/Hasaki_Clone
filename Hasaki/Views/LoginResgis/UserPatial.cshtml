@@ -1,19 +1,29 @@
-﻿@if (Session["Name"] != null)
+﻿@if (Session["Name1"] != null)
 {
     <div class="text_1_header">
     </div>
     <div class="text_1_header">
         <a href="" class="txt_link_hasaki txt_header_right" rel="nofollow">
-            @Session["Name"].ToString() <span class="icon_carret_down"></span>
+            @Session["Name1"].ToString() <span class="icon_carret_down"></span>
         </a>
     </div>
-    <div class="sub_login">
+    <div class="sub_login sub_dalogin">
         <div class="main_content_sub_login">
             <span class="arrow_sub_login"><span class="icon_carret_down"></span></span>
-            <div class="block_login_fb">
-                <div class="space_bottom_5"></div>
+            <div class="item_da_login">
+                <a href="https://hasaki.vn/customer/account" rel="nofollow"><i aria-hidden="true" class="fa fa-file-text-o"></i> Tài khoản của bạn </a>
             </div>
-            <div class="block_more_login">
+            <div class="item_da_login">
+                <a href="https://hasaki.vn/sales/order/history/" rel="nofollow"><i aria-hidden="true" class="fa fa-list-alt"></i> Quản lý đơn hàng </a>
+            </div>
+            <div class="item_da_login">
+                <a href="https://hasaki.vn/wishlist/" rel="nofollow"><i aria-hidden="true" class="fa fa-heart-o"></i> Sản phẩm yêu thích</a>
+            </div>
+            <div class="item_da_login">
+                <a href="https://hasaki.vn/customer/address/index" rel="nofollow"><i aria-hidden="true" class="fa fa-map-marker"></i> Địa chỉ giao hàng</a>
+            </div>
+            <div class="item_da_login">
+                <a href="https://hasaki.vn/customer/account/logout/" rel="nofollow"><i aria-hidden="true" class="fa fa-sign-out"></i> Thoát</a>
             </div>
         </div>
     </div>

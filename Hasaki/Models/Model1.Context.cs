@@ -10,6 +10,7 @@
 namespace Hasaki.Models
 {
     using System;
+    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
@@ -34,5 +35,6 @@ namespace Hasaki.Models
         public virtual DbSet<PhieuQuaTang> PhieuQuaTangs { get; set; }
         public virtual DbSet<SanPham> SanPhams { get; set; }
         public virtual DbSet<ThuongHieu> ThuongHieux { get; set; }
+        public IEnumerable<object> CTDonHang { get; internal set; }
     }
 }

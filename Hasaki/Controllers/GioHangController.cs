@@ -2,7 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
+using System.Net;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 
 namespace Hasaki.Controllers
@@ -114,21 +117,36 @@ namespace Hasaki.Controllers
             
             db.DonHangs.Add(donhang);
             db.SaveChanges();
+            var idDonhangmoi = donhang.DonHangID;
             foreach (var sp in giohang)
             {
                 ChiTietDonHang ctdh = new ChiTietDonHang();
                 ctdh.DonHangID = donhang.DonHangID;
+                ctdh.SanPhamID = sp.SanPhamID;
                 ctdh.SoLuong = sp.SoLuong;
                 ctdh.DonGia = sp.Gia;
                 db.ChiTietDonHangs.Add(ctdh);
             }
+            db.SaveChanges();
             Session["GioHang"] = null;
-            return RedirectToAction("DatHangThanhCong");
+            // Gửi email đăng ký thành công
+            SmtpClient client = new SmtpClient("smtp.gmail.com", 587);
+            client.EnableSsl = true;
+            client.UseDefaultCredentials = false;
+            client.Credentials = new NetworkCredential("lomki12231@gmail.com", "poka gibp icls gkvh");
+            MailMessage mailMessage = new MailMessage();
+            mailMessage.From = new MailAddress("lomki12231@gmail.com");
+            mailMessage.To.Add(Session["email"].ToString());
+            mailMessage.Subject = "Hasaki";
+            mailMessage.IsBodyHtml = true; // Cho phép sử dụng HTML trong nội dung email
+            mailMessage.Body = $"<h1>Đơn hàng của bạn đang được xử lý</h1><p>Mã đơn hàng của bạn là: <strong>{idDonhangmoi}</strong></p>";
+            client.Send(mailMessage);
+            return RedirectToAction("TimDonHang", "Home", new { iddonhang = idDonhangmoi, emailkh = kh.Email });
+
         }
         public ActionResult DatHangThanhCong()
         {
             return View();
-
         }
     }
 }

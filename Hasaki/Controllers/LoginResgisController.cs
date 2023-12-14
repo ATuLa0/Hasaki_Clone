@@ -12,6 +12,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity.Migrations;
 using System.Web.UI.HtmlControls;
+using System.Web.Helpers;
 
 namespace Hasaki.Controllers
 {
@@ -47,9 +48,10 @@ namespace Hasaki.Controllers
                     var khach = db.KhachHangs.FirstOrDefault(k => k.Email == kh.Email && k.MatKhau.ToLower() == matkhau.ToString());
                     if (khach != null)
                     {
-                        Session["Name"] = khach.TenKhachHang;
+                        Session["Name1"] = khach.TenKhachHang;
                         Session["IDuser"] = khach.KhachHangID;
                         Session["TaiKhoan"] = khach;
+                        Session["email"] = khach.Email;
                     }
                     else
                     {

@@ -47,7 +47,7 @@ namespace Hasaki.Areas.Admin.Controllers
                     }
                 }
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("DanhSachDH", "DonHang");
         }
     }
 }

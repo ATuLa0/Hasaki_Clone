@@ -35,12 +35,11 @@
     <link rel="stylesheet" type="text/css" href="~/Content/css2.css">
     <link rel="stylesheet" type="text/css" href="~/Content/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="~/Content/hasaki-v4-header-footer-0.0.100.min.css">
-    <script async="" src="//www.google-analytics.com/analytics.js"></script>
-    <script type="text/javascript" src="~/Content/hasaki-base-0.0.8.min.js"></script>
-    <script type="text/javascript" src="~/Content/hasaki-google-0.0.26.min.js"></script>
-    <script type="text/javascript" src="~/Content/hasaki-app-0.1.314.min.js"></script>
-    <script type="text/javascript" src="~/Content/hasaki_v3-0.0.73.js"></script>
-
+    <script src="~/Content/hasaki-app-0.1.314.min.js"></script>
+    <script src="~/Content/hasaki_v4-0.0.73.js"></script>
+    <script src="~/Content/hasaki_v3-0.0.73.js"></script>
+    <script src="~/Content/hasaki-google-0.0.26.min.js"></script>
+    <script src="~/Content/hasaki-base-0.0.8.min.js"></script>
     <style type="text/css">
         .fancybox-margin {
             margin-right: 15px;
@@ -58,32 +57,6 @@
             <div></div>
         </div>
     </div>
-    <script>
-        (function (d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s); js.id = id;
-            js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.1';
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
-    </script>
-
-    <script>
-        function initModuleChat() {
-            $.get("/ajax?api=auth.getSessionIdChat", function (data, status) {
-                let chatSessionId = '';
-                if (status === 'success' && data.data !== '' && data.error === 0) {
-                    chatSessionId = data.data;
-                }
-                ecomInitFn({
-                    elementId: "hsk-chat-root",
-                    popupLoginElId: "hskLoginButton",
-                    token: chatSessionId,
-                    webPlatform: true,
-                });
-            });
-        }
-    </script>
     <div id="hsk-chat-root" style="position: fixed; right: 40px; bottom: 25px; width: 85px; z-index: 100;">
         <div id="main-chat-container" class="_container_12bw6_16" style="transform: translateX(100vw);"></div><img class="_icon_iq4kl_47 loading" src="https://wsc.hasaki.vn/assets/customer_icons/app_icon.svg" width="60px"
                                                                                                                    height="60px" alt="" data-was-processed="true">
@@ -92,7 +65,7 @@
         </div>
     </div>
     <div id="header_wap">
-        <a href="javascript:;" onclick="window.history.back();" class="logo_site_detail material-ripple">
+        <a href="" onclick="window.history.back();" class="logo_site_detail material-ripple">
             <img class="icon_back" src="https://hasaki.vn/wap-static/images/graphics/back_200x200.svg">
         </a>
 
@@ -100,24 +73,6 @@
             <a href="https://hasaki.vn/checkout/cart/">
                 <img src="https://hasaki.vn/wap-static/images/graphics/cart_top.svg"><span class="number_cart">0</span>
             </a>
-        </div>
-
-        <div id="search_mobile" class="width_common relative">
-            <form id="search_mini_form_mb" action="/catalogsearch/result/" method="get">
-                <div class="block_search_mobile">
-                    <a href="javascript:;" class="show_search">
-                        <div class="text_search">
-                            <input type="text" name="q" id="search_mobile_input"
-                                   data-box-parent="#block_suggest_search_mb" autocomplete="off"
-                                   placeholder="Deal 7 Ngày 3K-5K | Áp Dụng Tại CN 135 Gò Vấp, TP.HCM (Từ 23-29/10)"
-                                   campaign-rel="[{&quot;label&quot;:&quot;Deal 7 Ngày 1K-5K | Tại Chi Nhánh Mới Đống Đa, Hà Nội (Từ 23-29/10)&quot;,&quot;url&quot;:&quot;https://hasaki.vn/campaign/khai-truong-chi-nhanh-moi-ha-noi?utm_medium=cpc&amp;utm_source=top_search&amp;utm_campaign=khai-truong-chi-nhanh-moi-ha-noi&amp;utm_term=khai-truong-chi-nhanh-moi-ha-noi_231023&quot;,&quot;image&quot;:&quot;https://media.hcdn.vn/&quot;,&quot;end_time&quot;:1698598740,&quot;start_time&quot;:1697994000},{&quot;label&quot;:&quot;Deal 7 Ngày 3K-5K | Áp Dụng Tại CN 135 Gò Vấp, TP.HCM (Từ 23-29/10)&quot;,&quot;url&quot;:&quot;https://hasaki.vn/campaign/khai-truong-chi-nhanh-135?utm_medium=cpc&amp;utm_source=top_search&amp;utm_campaign=khai-truong-chi-nhanh-135&amp;utm_term=khai-truong-chi-nhanh-135_231023&quot;,&quot;image&quot;:&quot;https://media.hcdn.vn/&quot;,&quot;end_time&quot;:1698598740,&quot;start_time&quot;:1697994000},{&quot;label&quot;:&quot;Top Bán Chạy Tháng 10 | Mua 1 Tặng 1 Giảm Đến 50% (SL Có Hạn)&quot;,&quot;url&quot;:&quot;https://hasaki.vn/campaign/best-seller?utm_medium=cpc&amp;utm_source=top_search&amp;utm_campaign=top-ban-chay-thang-10-2023&amp;utm_term=top-ban-chay_021023&quot;,&quot;image&quot;:&quot;https://media.hcdn.vn/&quot;,&quot;end_time&quot;:1698771540,&quot;start_time&quot;:1696179600}]">
-                        </div>
-                        <button class="fa fa-search" type="submit"></button>
-                    </a>
-                </div>
-                <div id="block_suggest_search_mb" class="block_suggest_search" style="display: none">
-                </div>
-            </form>
         </div>
     </div>
     <div id="v3_header">
@@ -136,7 +91,7 @@
                 </a>
             </div>
             <div id="search_site" class="search_site_v4">
-                <form class="form minisearch" id="search_mini_form" action="/catalogsearch/result/" method="get">
+                <form class="form minisearch" id="search_mini_form" action="@Url.Action("Index","Home")" method="get">
                     <div class="block_demo_search width_common">
                         <a href="https://hasaki.vn/danh-muc/chong-nang-da-mat-c11.html?utm_medium=seo&amp;utm_source=destop_search&amp;utm_campaign=kemchongnang_push_29032022">
                             Kem
@@ -155,14 +110,13 @@
                     <div class="v3_block_search_header">
                         <div class="relative width_common">
                             <div class="v3_block_input_search width_common">
-                                @using (Html.BeginForm("Search","Home"))
-                                {
                                 <div class="control">
+                                @using (Html.BeginForm("Index","Home"))
+                                {
                                     @Html.TextBox("SearchString", "", new {@class = "form-control", placeholder = "Tìm kiếm" })
-                                    <input type="submit" class="btn btn-default" value="search" />
+                                }
                                 </div>
 
-                                }
                             </div>
                             <div id="block_suggest_search" class="block_suggest_search" style="display:none;">
                             </div>
@@ -211,7 +165,7 @@
                 <a class="txt_color_1 menu_hamber" href="#">
                     DANH MỤC
                 </a>
-                @Html.Action("DanhMucPartial","Home")
+                @Html.Action("DanhMucPartial", "Home")
             </div>
 
             <div class="item_sub_menu_bar left">
@@ -222,29 +176,35 @@
                 <a href="/san-pham-ban-chay.html?sort=topsale">bán chạy</a>
                 <a href="/clinic.html">clinic &amp; spa </a>
             </div>
-            <div class="right block_app_topbar">
-                <div class="relative check_donhang left">
-                    <form action="/kiem-tra-don-hang.html" method="get" id="quick-checking-order" novalidate="novalidate">
-                        <a href="javascript:;" id="dLabel" class="btn_top_right" data-toggle="dropdown" aria-expanded="false">
-                            Tra cứu đơn hàng
-                        </a>
-                        <div class="block_input_order_checking dropdown-menu" aria-labelledby="dLabel" style="left: auto;">
-                            <span class="arrow_sub_topbar"><span class="icon_carret_down"></span></span>
-                            <div class="form-group">
-                                <div class="relative">
-                                    <input type="text" class="form-control" id="order_id" name="order_id" placeholder="Nhập mã đơn hàng" value="">
+            @if (Session["Name1"] == null)
+            {
+                <div class="right block_app_topbar">
+                    <div class="relative check_donhang left">
+                        <form action="@Url.Action("TimDonHang","Home")" method="get" id="quick-checking-order" novalidate="novalidate">
+                            @using (Html.BeginForm("TimDonHang", "Home"))
+                            {
+                                <a href="javascript:;" id="dLabel" class="btn_top_right" data-toggle="dropdown" aria-expanded="false">
+                                    Tra cứu đơn hàng
+                                </a>
+                                <div class="block_input_order_checking dropdown-menu" aria-labelledby="dLabel" style="left: auto;">
+                                    <span class="arrow_sub_topbar"><span class="icon_carret_down"></span></span>
+                                    <div class="form-group">
+                                        <div class="relative">
+                                            <input type="text" class="form-control" id="order_id" name="iddonhang" placeholder="Nhập mã đơn hàng" value="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="relative">
+                                            <input type="text" class="form-control" id="emailPhone" name="emailkh" placeholder="Nhập email hoặc số điện thoại" value="">
+                                        </div>
+                                    </div>
+                                    <div class="text-center"> <input type="submit" class="btn btn_site_1 btnCheckOrder" value="Kiểm tra đơn hàng"></div>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="relative">
-                                    <input type="text" class="form-control" id="emailPhone" name="contact" placeholder="Nhập email hoặc số điện thoại" value="">
-                                </div>
-                            </div>
-                            <div class="text-center"> <input type="submit" class="btn btn_site_1 btnCheckOrder" value="Kiểm tra đơn hàng"></div>
-                        </div>
-                    </form>
+                            }
+                        </form>
+                    </div>
                 </div>
-            </div>
+            }
         </div>
     </div>
 

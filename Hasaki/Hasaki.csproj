@@ -183,6 +183,7 @@
     <Compile Include="Models\ThuongHieu.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\TimDonHang.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -2106,7 +2107,7 @@
     <Content Include="Views\LoginResgis\Finish.cshtml" />
     <Content Include="Views\LoginResgis\UserPatial.cshtml" />
     <Content Include="Views\GioHang\DatHangThanhCong.cshtml" />
-    <Content Include="Views\Home\Search.cshtml" />
+    <Content Include="Views\Home\TimDonHang.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
